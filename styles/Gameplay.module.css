@@ -1,0 +1,99 @@
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+.motor {
+    background: transparent;
+    position: absolute;
+    z-index: 3;
+}
+
+.slider {
+  height: 90px;
+  margin: auto;
+  position: relative;
+  width: 500px;
+
+  /* before */
+}
+
+.slider::before {
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 100px;
+  z-index: 2;
+  left: 0;
+  top: 0;
+}
+
+.sliderBox {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    border-radius: 8px;
+    overflow: hidden;
+    width: inherit;
+    max-width: 502px;
+    box-shadow: 3px 4px 20px -2px rgb(0 0 0 / 51%);
+}
+
+.road {
+    background: #000;
+    width: inherit;
+    position: absolute;
+    height: 65px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.slider::after {
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 100px;
+  z-index: 2;
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.sliderCloud {
+  animation: scroll 295s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+    z-index: -1;
+}
+
+.slideCloud {
+    z-index: -1;
+    height: 15px;
+}
+.slideHouse {
+    width: 115px;
+    top: 0;
+    overflow: hidden;
+}
+.sliderHouse {
+  position: absolute;
+  animation: scroll 15s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+  top: -35px;
+}
+.slideTrack {
+  animation: scroll 5s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+}
+
+.slide {
+  height: 100px;
+  width: 135px;
+  border-bottom: 25px dotted #8bc34aa6;
+}
