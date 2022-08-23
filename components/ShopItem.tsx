@@ -8,22 +8,22 @@ import {
 import { EditionDrop } from "@thirdweb-dev/sdk";
 import { BigNumber, ethers } from "ethers";
 import React from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 
 type Props = {
-  pickaxeContract: EditionDrop;
+  initialContract: EditionDrop;
   item: NFT<EditionDrop>;
 };
 
-export default function ShopItem({ item, pickaxeContract }: Props) {
+export default function ShopItem({ item, initialContract }: Props) {
   const address = useAddress();
 
   const { data: claimCondition } = useActiveClaimCondition(
-    pickaxeContract,
+    initialContract,
     item.metadata.id
   );
 
-  const { mutate: claimNft } = useClaimNFT(pickaxeContract);
+  const { mutate: claimNft } = useClaimNFT(initialContract);
 
   console.log(claimCondition);
 

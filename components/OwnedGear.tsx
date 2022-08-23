@@ -6,24 +6,24 @@ import {
 import { EditionDrop, SmartContract } from "@thirdweb-dev/sdk";
 import React from "react";
 import LoadingSection from "./LoadingSection";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import { BigNumber } from "ethers";
-import { MINING_CONTRACT_ADDRESS } from "../const/contractAddresses";
+import { MINING_CONTRACT_ADDRESS } from "../const/contract";
 
 type Props = {
-  pickaxeContract: EditionDrop;
+  initialContract: EditionDrop;
   miningContract: SmartContract<any>;
 };
 
 /**
  * This component shows the:
- * - Pickaxes the connected wallet has
+ * - Initials the connected wallet has
  * - A stake button underneath each of them to equip it
  */
-export default function OwnedGear({ pickaxeContract, miningContract }: Props) {
+export default function OwnedGear({ initialContract, miningContract }: Props) {
   const address = useAddress();
-  const { data: ownedPickaxes, isLoading } = useOwnedNFTs(
-    pickaxeContract,
+  const { data: ownedInitials, isLoading } = useOwnedNFTs(
+    initialContract,
     address
   );
 
@@ -34,14 +34,14 @@ export default function OwnedGear({ pickaxeContract, miningContract }: Props) {
   async function equip(id: BigNumber) {
     if (!address) return;
 
-    // The contract requires approval to be able to transfer the pickaxe
-    const hasApproval = await pickaxeContract.isApproved(
+    // The contract requires approval to be able to transfer the initial
+    const hasApproval = await initialContract.isApproved(
       address,
       MINING_CONTRACT_ADDRESS
     );
 
     if (!hasApproval) {
-      await pickaxeContract.setApprovalForAll(MINING_CONTRACT_ADDRESS, true);
+      await initialContract.setApprovalForAll(MINING_CONTRACT_ADDRESS, true);
     }
 
     await miningContract.call("stake", id);
@@ -67,7 +67,7 @@ export default function OwnedGear({ pickaxeContract, miningContract }: Props) {
             }}
           >
       <div className={styles.nftBoxGrid}>
-        {ownedPickaxes?.map((p) => (
+        {ownedInitials?.map((p) => (
           <div className={styles.nftBox} key={p.metadata.id.toString()}>
             <ThirdwebNftMedia
               metadata={p.metadata}

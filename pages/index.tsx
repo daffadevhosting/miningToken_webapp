@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import {
   useAddress,
   useEditionDrop,
   useMetamask,
   useOwnedNFTs,
 } from "@thirdweb-dev/react";
-import { CHARACTER_EDITION_ADDRESS } from "../const/contractAddresses";
+import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
 import MintContainer from "../components/MintContainer";
 import { useRouter } from "next/router";
 
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
     return (
       <div className={styles.container}>
         <button
-          className={`${styles.mainButton} ${styles.spacerBottom}`}
+          className={`${styles.mainButton} ${styles.loading}`}
           onClick={connectWithMetamask}
         >
           Connect Wallet
@@ -39,12 +39,14 @@ const Home: NextPage = () => {
 
   // 1. Loading
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className={styles.loading}><div className="spinner-grow" role="status">
+  <span className="visually-hidden">Loading...</span></div>
+</div>;
   }
 
   // Something went wrong
   if (!ownedNfts || isError) {
-    return <div>Error</div>;
+    return <div className={styles.loading}>Error</div>;
   }
 
   // 2. No NFTs - mint page
@@ -60,7 +62,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <button
-        className={`${styles.mainButton} ${styles.spacerBottom}`}
+        className={`${styles.mainButton} ${styles.loading}`}
         onClick={() => router.push(`/play`)}
       >
         Play Game

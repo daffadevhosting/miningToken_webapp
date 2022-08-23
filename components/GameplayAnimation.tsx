@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/Gameplay.module.css";
+import styles from "../styles/Gameplay.module.scss";
 import EditionDropMetadata from "../types/EditionDropMetadata";
 
 const Pohon = (
@@ -34,11 +34,11 @@ const House2 = (
 
 
 type Props = {
-  pickaxe: EditionDropMetadata | undefined;
+  initial: EditionDropMetadata | undefined;
 };
 
-export default function GameplayAnimation({ pickaxe }: Props) {
-  if (!pickaxe) {
+export default function GameplayAnimation({ initial }: Props) {
+  if (!initial) {
     return 
         <div>
     <div style={{ marginLeft: 8 }}>saya perlu bahan bakar !</div></div>;

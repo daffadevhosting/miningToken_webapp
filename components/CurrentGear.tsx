@@ -4,29 +4,24 @@ import React, { useEffect, useState } from "react";
 import ContractMappingResponse from "../types/ContractMappingResponse";
 import EditionDropMetadata from "../types/EditionDropMetadata";
 import GameplayAnimation from "./GameplayAnimation";
-import styles from "../styles/Home.module.css";
-import Gameplay from "../styles/Gameplay.module.css";
+import styles from "../styles/Home.module.scss";
+import Gameplay from "../styles/Gameplay.module.scss";
 
 type Props = {
   miningContract: SmartContract<any>;
   characterContract: EditionDrop;
-  pickaxeContract: EditionDrop;
+  initialContract: EditionDrop;
 };
 
-/**
- * This component shows the:
- * - Currently equipped miner character (right now there is just one (token ID 0))
- * - Currently equipped character's pickaxe
- */
 export default function CurrentGear({
   miningContract,
   characterContract,
-  pickaxeContract,
+  initialContract,
 }: Props) {
   const address = useAddress();
 
   const { data: playerNft } = useNFT(characterContract, 0);
-  const [pickaxe, setPickaxe] = useState<EditionDropMetadata>();
+  const [initial, setInitial] = useState<EditionDropMetadata>();
 
 
 const Cloud = (
@@ -44,17 +39,18 @@ const Cloud = (
         address
       )) as ContractMappingResponse;
 
-      // Now we have the tokenId of the equipped pickaxe, if there is one, fetch the metadata for it
+      // Now we have the tokenId of the equipped initial, if there is one, fetch the metadata for it
       if (p.isData) {
-        const pickaxeMetadata = await pickaxeContract.get(p.value);
-        setPickaxe(pickaxeMetadata);
+        const initialMetadata = await initialContract.get(p.value);
+        setInitial(initialMetadata);
       }
     })();
-  }, [address, miningContract, pickaxeContract]);
+  }, [address, miningContract, initialContract]);
 
   return (
 <>
-{pickaxe ? (
+{initial ? (
+<div className="card" style={{backgroundColor: 'transparent'}}>
     <div className={Gameplay.sliderBox}>
       <div className={Gameplay.sliderCloud}>
 {Cloud}
@@ -70,7 +66,7 @@ const Cloud = (
           flexDirection: "row",
           justifyContent: "space-between",
           padding: '0 12px',
-          marginBottom: '60px'
+          marginBottom: '40px'
         }}
       >
         {/* Currently equipped player */}
@@ -79,19 +75,19 @@ const Cloud = (
             <ThirdwebNftMedia metadata={playerNft?.metadata} height={"40"} />
           )}
         </div>
-        {/* Currently equipped pickaxe */}
+        {/* Currently equipped initial */}
         <div
           style={{ borderRadius: 16, marginLeft: 8, height: 40, overflow: 'hidden' }}
         >
-          {pickaxe && (
+          {initial && (
             // @ts-ignore
-            <ThirdwebNftMedia metadata={pickaxe.metadata} height={"40"} />
+            <ThirdwebNftMedia metadata={initial.metadata} height={"40"} />
           )}
         </div>
       </div>
-{pickaxe && (
-      <h3 className={`${styles.noGapTop} `}>Bahan Bakar Yang dipakai: <b>
-{pickaxe.metadata.name}</b></h3>)}
+{initial && (
+      <span className={`${styles.noGapTop} `}>Bahan Bakar Yang dipakai: <b>
+{initial.metadata.name}</b></span>)}
 
       {/* Gameplay Animation */}
 
@@ -105,17 +101,19 @@ const Cloud = (
         }}
       >
         <img className={Gameplay.motor} src="./motor.png" height={64} width={64} alt="character-mining" />
-        <GameplayAnimation pickaxe={pickaxe} />
+        <GameplayAnimation initial={initial} />
       </div>
     </div>
+</div>
 ) : ( 
 <>
-    <div className={Gameplay.sliderBox}>
-<h4>Untuk Memulai</h4>
-<span style={{padding: '10px', textAlign: 'left'}}> Pilih jenis bahan bakar untuk mengaktifkan fungsi mining.<br/>Setiap bahan bakar mempunyai tingkat kecepatan mining token yang berbeda, kamu bisa memulai dengan bahan bakar "premium" yang disediakan gratis untuk mulai mengumpulkan token. Token bisa dibeli dan dijual di sushiswap segera.</span>
+<div className="card">
+    <div className={Gameplay.sliderBox} style={{padding: '10px', textAlign: 'left'}}>
+<h5>Cara Mining Token</h5>
+<span> Pilih jenis bahan bakar untuk mengaktifkan fungsi mining.<br/>Setiap bahan bakar mempunyai tingkat kecepatan mining token yang berbeda, kamu bisa memulai dengan bahan bakar "premium" yang disediakan gratis untuk mulai mengumpulkan token. Token bisa dibeli dan dijual di sushiswap segera.</span>
         <img style={{position: 'relative'}} src="./motor.png" height={64} width={64} alt="character-mining" />
     </div>
-
+</div>
 </>
     )}
 </>

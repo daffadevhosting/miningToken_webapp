@@ -5,8 +5,8 @@ import {
   useEditionDrop,
 } from "@thirdweb-dev/react";
 import React from "react";
-import { CHARACTER_EDITION_ADDRESS } from "../const/contractAddresses";
-import styles from "../styles/Home.module.css";
+import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
+import styles from "../styles/Home.module.scss";
 
 export default function MintContainer() {
   const editionDrop = useEditionDrop(CHARACTER_EDITION_ADDRESS);

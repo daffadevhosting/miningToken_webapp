@@ -7,13 +7,13 @@ import {
   useContractData
 } from "@thirdweb-dev/react";
 import { SmartContract, Token } from "@thirdweb-dev/sdk";
-import { GOLD_GEMS_ADDRESS } from "../const/contractAddresses";
+import { INITIAL_TOKEN_ADDRESS } from "../const/contract";
 import { BigNumber, ethers } from "ethers";
 import React, { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import ApproxRewards from "./ApproxRewards";
 
-const noContract = GOLD_GEMS_ADDRESS;
+const numberContract = INITIAL_TOKEN_ADDRESS;
 
 type Props = {
   miningContract: SmartContract<any>;
@@ -21,12 +21,6 @@ type Props = {
   tokenSymbol: Token;
 };
 
-/**
- * This component shows the:
- * - Metadata of the token itself (mainly care about image)
- * - The amount this wallet holds of this wallet
- * - The amount this user can claim from the mining contract
- */
 export default function Rewards({ miningContract, tokenContract, tokenSymbol }: Props) {
   const address = useAddress();
 
@@ -63,7 +57,7 @@ export default function Rewards({ miningContract, tokenContract, tokenSymbol }: 
         />
 <b>{tokenMetadata.name}</b>      
       </p>
-<small>smartcontracts: {noContract}</small>
+<small>smartcontracts: {numberContract}</small>
       <p className={styles.noGapBottom}>
 
         Saldo di wallet: <b>{currentBalance?.displayValue} <small>{tokenMetadata.symbol}</small></b>
