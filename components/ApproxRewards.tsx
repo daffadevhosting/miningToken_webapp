@@ -57,7 +57,7 @@ export default function ApproxRewards({ miningContract }: Props) {
   }, [amount, everyMillisecondAmount]);
 
   return (
-    <p style={{ width: '-webkit-fill-available', overflow: "hidden", display: 'flex', flexDirection: 'row', alignItem: 'center', alignContent: 'flex-start', gap: 5 }}>
+    <p style={{ width: '-webkit-fill-available', overflow: "hidden", display: 'flex', flexDirection: 'row', alignItems: 'center', alignContent: 'flex-start', gap: 5 }}>
       Di Sesi ini:{" "}
       <b style={{display:'flex', justifyContent:'flex-start',}}>
         {ethers.utils.formatEther((amount * multiplier).toFixed(0)) ||
