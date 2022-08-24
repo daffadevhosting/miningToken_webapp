@@ -3,17 +3,35 @@ import styles from "../styles/Home.module.scss";
 import {
   useAddress,
   useEditionDrop,
-  useMetamask,
+  useMetamask, useWalletConnect, useCoinbaseWallet,
   useOwnedNFTs,
+  useNetwork,
+  useNetworkMismatch,
+  ChainId
 } from "@thirdweb-dev/react";
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import ListGroup from 'react-bootstrap/ListGroup';
 import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
 import MintContainer from "../components/MintContainer";
 import { useRouter } from "next/router";
+import Spinner from 'react-bootstrap/Spinner';
 
 const Home: NextPage = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const editionDrop = useEditionDrop(CHARACTER_EDITION_ADDRESS);
 
+  const networkMismatch = useNetworkMismatch();
+  const [, switchNetwork] = useNetwork();
+
   const connectWithMetamask = useMetamask();
+  const connectWithWalletConnect = useWalletConnect();
+  const connectWithCoinbaseWallet = useCoinbaseWallet();
   const address = useAddress();
   const router = useRouter();
 
@@ -26,22 +44,34 @@ const Home: NextPage = () => {
   // 0. Wallet Connect - required to check if they own an NFT
   if (!address) {
     return (
-      <div className={styles.container}>
-        <button
-          className={`${styles.mainButton} ${styles.loading}`}
-          onClick={connectWithMetamask}
+<>
+      <div className={styles.loading}>
+        <Button
+          className={`${styles.mainButton}`}
+           onClick={handleShow}
         >
           Connect Wallet
-        </button>
+        </Button>
       </div>
+    <Modal show={show} onHide={handleClose} animation={true} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Connect your Wallet</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+    <ListGroup>
+      <ListGroup.Item style={{display: 'flex', alignItems: 'center', gap: 15, cursor: 'pointer'}} onClick={ () => { connectWithMetamask(); handleClose();}}><i className={styles.metamask}/> MetaMask</ListGroup.Item>
+      <ListGroup.Item style={{display: 'flex', alignItems: 'center', gap: 15, cursor: 'pointer'}} onClick={ () => { connectWithWalletConnect(); handleClose();}}><i className={styles.walletconnect}/> WalletConnect</ListGroup.Item>
+      <ListGroup.Item style={{display: 'flex', alignItems: 'center', gap: 15, cursor: 'pointer'}} onClick={ () => { connectWithCoinbaseWallet(); handleClose();}}><i className={styles.coinbase}/> Coin Base</ListGroup.Item>
+    </ListGroup>
+    </Modal.Body>
+      </Modal>
+</>
     );
   }
 
   // 1. Loading
   if (isLoading) {
-    return <div className={styles.loading}><div className="spinner-grow" role="status">
-  <span className="visually-hidden">Loading...</span></div>
-</div>;
+    return <div className={styles.loading}><Spinner animation="grow" /></div>;
   }
 
   // Something went wrong
@@ -61,12 +91,20 @@ const Home: NextPage = () => {
   // 3. Has NFT already - show button to take to game
   return (
     <div className={styles.container}>
+<>
+{networkMismatch ? (
+    <button onClick={() => switchNetwork(ChainId.FantomTestnet)} className={`${styles.mainButton} ${styles.loading}`}>
+      Switch Network
+    </button>
+) : (
       <button
         className={`${styles.mainButton} ${styles.loading}`}
-        onClick={() => router.push(`/play`)}
+        onClick={() => router.push(`/mining`)}
       >
-        Play Game
+        Start Mining
       </button>
+)}
+</>
     </div>
   );
 };

@@ -52,17 +52,13 @@ export default function OwnedGear({ initialContract, miningContract }: Props) {
 
   return (
     <>
-          <h2 className={`${styles.noGapTop} ${styles.noGapBottom}`}>
+          <h4 style={{marginTop: '20px'}}>
             Item kamu
-          </h2>
+          </h4>
           <div
             style={{
               width: "100%",
               minHeight: "10rem",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
               marginTop: 8,
             }}
           >
@@ -74,7 +70,7 @@ export default function OwnedGear({ initialContract, miningContract }: Props) {
               className={`${styles.nftMedia} ${styles.spacerTop}`}
               height={"64"}
             />
-            <h3>{p.metadata.name}</h3>
+            <p>{p.metadata.name}</p>
 
             <button
               onClick={() => equip(p.metadata.id)}

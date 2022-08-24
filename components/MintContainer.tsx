@@ -6,6 +6,8 @@ import {
 } from "@thirdweb-dev/react";
 import React from "react";
 import Image from 'next/image';
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
 import styles from "../styles/Home.module.scss";
 
@@ -18,13 +20,28 @@ export default function MintContainer() {
     <div className={styles.collectionContainer}>
       <h1>Edition Drop</h1>
 
-      <p>Claim NFT gratis mu & mulailah menambang!</p>
+      <p>Claim NFT gratis mu & mulai menambang!</p>
 
       <div className={`${styles.nftBox} ${styles.spacerBottom}`}>
         <Image src="/motorcyclist.webp" height={200} width={200} alt="logo" style={{ height: 200 }} />
       </div>
-
-      <button
+        {isLoading ? (
+<div>
+      <Button className={`${styles.mainButton} ${styles.spacerBottom}`} disabled>
+        <Spinner
+          as="span"
+          animation="border"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        <span className="visually-hidden">
+        Loading...</span>
+      </Button>
+</div>
+    ) : (
+<div>
+      <Button
         className={`${styles.mainButton} ${styles.spacerBottom}`}
         onClick={() =>
           claim({
@@ -33,9 +50,12 @@ export default function MintContainer() {
             tokenId: 0,
           })
         }
+
       >
-        {isLoading ? "Loading..." : "Claim"}
-      </button>
+    Claim
+      </Button>
+</div>
+ )}
     </div>
   );
 }

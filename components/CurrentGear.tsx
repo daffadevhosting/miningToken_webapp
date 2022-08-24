@@ -65,10 +65,10 @@ const Cloud = (
       <div
         style={{
           display: "flex",
+          padding: '0 10px',
           alignItems: "center",
           flexDirection: "row",
           justifyContent: "space-between",
-          padding: '0 12px',
           marginBottom: '40px'
         }}
       >
@@ -101,7 +101,7 @@ const Cloud = (
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "flex-start",
-          marginTop: 72,
+          marginTop: 33,
         }}
       >
         <Image className={Gameplay.motor1} src="/motor.png" height={64} width={64} alt="character-mining" />
@@ -111,13 +111,13 @@ const Cloud = (
 </Card>
 ) : ( 
 <>
-<div className="card">
-    <div className={Gameplay.sliderBox} style={{padding: '10px', textAlign: 'left'}}>
-<h5>Cara Mining Token</h5>
-<span> Pilih jenis bahan bakar untuk mengaktifkan fungsi mining.<br/>Setiap bahan bakar mempunyai tingkat kecepatan mining token yang berbeda, kamu bisa memulai dengan bahan bakar "premium" yang disediakan <b>gratis</b> untuk mulai mengumpulkan token. Token bisa dibeli dan dijual di sushiswap segera.</span>
+<Card className="card">
+    <Card.Body className={Gameplay.sliderBox} style={{padding: '10px', textAlign: 'left'}}>
+<Card.Title>Cara Mining Token</Card.Title>
+<span> Pilih jenis bahan bakar untuk mengaktifkan fungsi mining.<br/>Setiap bahan bakar mempunyai tingkat kecepatan menambang yang berbeda, kamu bisa memulai dengan bahan bakar "premium" yang disediakan <b>gratis</b> untuk mulai mengumpulkan token. Atau bisa juga kamu membeli bahan bakar lain untuk kecepatan mining maksimal, Token bisa dibeli dan dijual di sushiswap segera.</span>
         <Image className={Gameplay.motor} src="/motor.png" height="64px" width="64px" alt="character-mining" />
-    </div>
-</div>
+    </Card.Body>
+</Card>
 </>
     )}
 </>

@@ -1,9 +1,9 @@
-$metamask: url('../../public/icons/metamask.svg');
-$walletconnect: url('../../public/icons/walletconnect.svg');
-$coinbase: url('../../public/icons/coinbase.svg');
-$polygon: url('../../public/icons/polygon.png');
-$ftm: url('../../public/icons/ftm.png');
-$avatar: url('../../public/avatar.png');
+$metamask: url('../public/icons/metamask.svg');
+$walletconnect: url('../public/icons/walletconnect.svg');
+$coinbase: url('../public/icons/coinbase.svg');
+$polygon: url('../public/icons/polygon.png');
+$ftm: url('../public/icons/ftm.png');
+$avatar: url('../public/avatar.png');
 
 // Mobile breakpoints
 @mixin mobile {
@@ -18,8 +18,6 @@ $avatar: url('../../public/avatar.png');
   top: 50%;
   transform: translate(-50%,-50%);
   font: 14px arial;
-  border-radius: 30%;
-  overflow: hidden;
 }
 
 .hidden {

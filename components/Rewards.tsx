@@ -47,7 +47,6 @@ export default function Rewards({ miningContract, tokenContract }: Props) {
   return (
     <Card className={styles.rewardBox}
     >
-      <Card.Body>
 {tokenMetadata && (
 <>
       <Card.Title style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '5px'}}>        <ThirdwebNftMedia
@@ -75,7 +74,6 @@ export default function Rewards({ miningContract, tokenContract }: Props) {
       >
         Claim
       </Button>
-    </Card.Body>
    </Card>
   );
 }

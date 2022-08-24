@@ -6,6 +6,7 @@ import {
   useToken,
 } from "@thirdweb-dev/react";
 import React, { useState } from "react";
+import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CurrentGear from "../components/CurrentGear";
@@ -37,16 +38,16 @@ export default function Play() {
 
   if (!address) {
     return (
-      <div className={styles.container}>
+      <Container>
         <button className={styles.mainButton} onClick={connectWithMetamask}>
           Connect Wallet
         </button>
-      </div>
+      </Container>
     );
   }
 
   return (
-    <div className={styles.container}>
+    <Container style={{ margin: '10px auto' }}>
       {miningContract &&
       characterContract &&
       tokenContract &&
@@ -63,10 +64,9 @@ export default function Play() {
           />
         </div>
       ) : (
-        <LoadingSection />
+        <></>
       )}
 
-      <hr className={`${styles.divider} ${styles.bigSpacerTop}`} />
 
       {initialContract && miningContract ? (
         <>
@@ -78,14 +78,13 @@ export default function Play() {
       ) : (
         <LoadingSection />
       )}
-
-      <hr className={`${styles.divider} ${styles.bigSpacerTop}`} />
+<></>
 
       {initialContract && tokenContract ? (
         <>
     <Offcanvas show={show} onHide={handleClose} placement='bottom' style={{height: '80vh'}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title><BsShopWindow size={'28px'}/> Shop Item</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div
@@ -103,12 +102,12 @@ export default function Play() {
           </div>
         </Offcanvas.Body>
       </Offcanvas>
-<Button variant="primary" onClick={handleShow} className="me-2" style={{position: 'fixed', bottom: 20, right: 20, width: '54px', height: '54px'}}><BsShopWindow size={'30px'}/></Button>
+<Button variant="primary" onClick={handleShow} className="me-2" style={{position: 'fixed', bottom: 20, right: 20, width: '54px', height: '54px'}}><BsShopWindow size={'28px'}/></Button>
 
         </>
       ) : (
         <LoadingSection />
       )}
-    </div>
+    </Container>
   );
 }

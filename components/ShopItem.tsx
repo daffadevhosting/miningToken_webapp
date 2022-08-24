@@ -8,6 +8,8 @@ import {
 import { EditionDrop } from "@thirdweb-dev/sdk";
 import { BigNumber, ethers } from "ethers";
 import React from "react";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import styles from "../styles/Home.module.scss";
 
 type Props = {
@@ -43,13 +45,14 @@ export default function ShopItem({ item, initialContract }: Props) {
   }
 
   return (
-    <div className={styles.nftBox} key={item.metadata.id.toString()}>
+    <Card style={{ maxWidth: '18rem' }} className={styles.nftBox} key={item.metadata.id.toString()}>
       <ThirdwebNftMedia
         metadata={item.metadata}
         className={`${styles.nftMedia} ${styles.spacerTop}`}
         height={"64"}
       />
-      <h3>{item.metadata.name}</h3>
+      <Card.Body>
+      <h6>{item.metadata.name}</h6>
       <small>{item.metadata.description}</small>
       <p>
         Harga:{" "}
@@ -59,12 +62,13 @@ export default function ShopItem({ item, initialContract }: Props) {
         </b>
       </p>
 
-      <button
+      <Button
         onClick={() => buy(item.metadata.id)}
         className={`${styles.miniBtn} ${styles.spacerBottom}`}
       >
         Beli
-      </button>
-    </div>
+      </Button>
+      </Card.Body>
+    </Card>
   );
 }
