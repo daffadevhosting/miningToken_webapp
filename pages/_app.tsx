@@ -17,11 +17,11 @@ useEffect(() => {
   return (
 <>
 <Head>
-<meta name="application-name" content="PWA App" />
+<meta name="application-name" content="InitialD Token" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<meta name="apple-mobile-web-app-title" content="PWA App" />
-<meta name="description" content="Best PWA App in the world" />
+<meta name="apple-mobile-web-app-title" content="InitialD Token" />
+<meta name="description" content="Mining InitialD Token" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="msapplication-config" content="/icons/fav/browserconfig.xml" />
@@ -40,15 +40,15 @@ useEffect(() => {
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:url" content="/" />
 <meta name="twitter:title" content="Mining App" />
-<meta name="twitter:description" content="Best PWA App in the world" />
-<meta name="twitter:image" content="https://yourdomain.com/icons/android-chrome-192x192.png" />
+<meta name="twitter:description" content="Mining App at Tasikmalaya" />
+<meta name="twitter:image" content="/icons/fav/android-chrome-192x192.png" />
 <meta name="twitter:creator" content="@unangningEU" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="PWA App" />
+<meta property="og:title" content="InitialD Token" />
 <meta property="og:description" content="Best Mining App" />
 <meta property="og:site_name" content="Mining App" />
 <meta property="og:url" content="/" />
-<meta property="og:image" content="/icons/apple-touch-icon.png" />
+<meta property="og:image" content="/icons/fav/apple-touch-icon.png" />
 </Head>
     <ThirdwebProvider desiredChainId={ChainId.FantomTestnet}>
       <Component {...pageProps} />
