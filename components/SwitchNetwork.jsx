@@ -7,6 +7,7 @@ import {
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Button from 'react-bootstrap/Button';
+import MintContainer from "../components/MintContainer";
 import styles from "../styles/Home.module.scss";
 
 
@@ -31,12 +32,9 @@ function Switch() {
       Switch Network
     </Button>
 ) : (
-      <Button
-        className={`${styles.mainButton} ${styles.loading}`}
-        onClick={() => router.push(`/mining`)}
-      >
-        Start Mining
-      </Button>
+<>
+        <MintContainer />
+</>
 )}
 </>
     );

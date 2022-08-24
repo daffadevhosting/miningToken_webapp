@@ -12,7 +12,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
-import MintContainer from "../components/MintContainer";
 import SwitchNetwork from "../components/SwitchNetwork";
 import { useRouter } from "next/router";
 import Spinner from 'react-bootstrap/Spinner';
@@ -46,6 +45,7 @@ const Home: NextPage = () => {
 <title>InitialD Token</title>
 </Head>
       <div className={styles.loading}>
+        <SwitchNetwork />
         <Button
           className={`${styles.mainButton}`}
            onClick={handleShow}
@@ -87,7 +87,7 @@ const Home: NextPage = () => {
 <title>InitialD Token</title>
 </Head>
       <div className={styles.container}>
-        <MintContainer />
+        <SwitchNetwork />
       </div>
 </>
     );
@@ -100,7 +100,12 @@ const Home: NextPage = () => {
 <title>InitialD Token</title>
 </Head>
     <div className={styles.container}>
-        <SwitchNetwork />
+      <Button
+        className={`${styles.mainButton} ${styles.loading}`}
+        onClick={() => router.push(`/mining`)}
+      >
+        Start Mining
+      </Button>
     </div>
 </>
   );
