@@ -21,7 +21,7 @@ export default function MintContainer() {
       <p>Claim NFT gratis mu & mulailah menambang!</p>
 
       <div className={`${styles.nftBox} ${styles.spacerBottom}`}>
-        <Image src="/motorcyclist.webp" height="200" widht="200" alt="logo" style={{ height: 200 }} />
+        <Image src="/motorcyclist.webp" height={200} width={200} alt="logo" style={{ height: 200 }} />
       </div>
 
       <button

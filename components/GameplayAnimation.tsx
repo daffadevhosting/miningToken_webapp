@@ -5,31 +5,31 @@ import EditionDropMetadata from "../types/EditionDropMetadata";
 
 const Pohon = (
   <div className={styles.slide}>
-    <Image src="/pohon.png" height="48" width="48" alt="pohon" />
+    <Image src="/pohon.png" height={48} width={48} alt="pohon" />
   </div>
 );
 
 const Pohon1 = (
   <div className={styles.slide}>
-    <Image src="/pohon1.png" height="48" width="48" alt="pohon1" />
+    <Image src="/pohon1.png" height={48} width={48} alt="pohon1" />
   </div>
 );
 
 const House = (
   <div className={styles.slideHouse}>
-    <Image style={{zIndex: '-1px'}} src="/home.png" height="80" width="110" alt="house" />
+    <Image style={{zIndex: '-1px'}} src="/home.png" height={80} width={110} alt="house" />
   </div>
 );
 
 const House1 = (
   <div className={styles.slideHouse}>
-    <Image style={{zIndex: '-1px'}} src="/home1.png" height="80" width="110" alt="house" />
+    <Image style={{zIndex: '-1px'}} src="/home1.png" height={80} width={110} alt="house" />
   </div>
 );
 
 const House2 = (
   <div className={styles.slideHouse}>
-    <Image style={{zIndex: '-1px'}} src="/home2.png" height="80" width="110" alt="house" />
+    <Image style={{zIndex: '-1px'}} src="/home2.png" height={80} width={110} alt="house" />
   </div>
 );
 
@@ -39,12 +39,6 @@ type Props = {
 };
 
 export default function GameplayAnimation({ initial }: Props) {
-  if (!initial) {
-    return 
-        <div>
-    <div style={{ marginLeft: 8 }}>saya perlu bahan bakar !</div></div>;
-  }
-
   return (
 <>
     <div className={styles.slider}>
@@ -92,5 +86,5 @@ export default function GameplayAnimation({ initial }: Props) {
       </div>
     </div>
 </>
-  );
+  )
 }

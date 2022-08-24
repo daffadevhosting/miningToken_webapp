@@ -5,7 +5,9 @@ import {
   useMetamask,
   useToken,
 } from "@thirdweb-dev/react";
-import React from "react";
+import React, { useState } from "react";
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import CurrentGear from "../components/CurrentGear";
 import LoadingSection from "../components/LoadingSection";
 import OwnedGear from "../components/OwnedGear";
@@ -21,6 +23,11 @@ import {
 import styles from "../styles/Home.module.scss";
 
 export default function Play() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const address = useAddress();
   const connectWithMetamask = useMetamask();
   const { contract: miningContract } = useContract(MINING_CONTRACT_ADDRESS);
@@ -76,12 +83,11 @@ export default function Play() {
 
       {initialContract && tokenContract ? (
         <>
-<div className="offcanvas offcanvas-bottom" tabIndex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" style={{height: '80vh'}}>
-  <div className="offcanvas-header">
-    <h5 className="offcanvas-title" id="offcanvasBottomLabel">Beli Bahan Bakar</h5>
-    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div className="offcanvas-body small">
+    <Offcanvas show={show} onHide={handleClose} placement='bottom' style={{height: '80vh'}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
           <div
             style={{
               width: "100%",
@@ -95,9 +101,9 @@ export default function Play() {
           >
             <Shop initialContract={initialContract} />
           </div>
-  </div>
-</div>
-<button className="btn btn-primary p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" style={{position: 'fixed', bottom: 20, right: 20, width: '54px', height: '54px'}}><BsShopWindow size={'30px'}/></button>
+        </Offcanvas.Body>
+      </Offcanvas>
+<Button variant="primary" onClick={handleShow} className="me-2" style={{position: 'fixed', bottom: 20, right: 20, width: '54px', height: '54px'}}><BsShopWindow size={'30px'}/></Button>
 
         </>
       ) : (

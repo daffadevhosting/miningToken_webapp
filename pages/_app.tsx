@@ -9,8 +9,10 @@ import * as Popper from "@popperjs/core"
 function MyApp({ Component, pageProps }: AppProps) {
 
 useEffect(() => {
-    import("bootstrap/dist/js/bootstrap.bundle");
-}, []);
+  typeof document !== undefined 
+  ? require('bootstrap/dist/js/bootstrap') 
+  : null
+}, [])
 
   return (
 <>

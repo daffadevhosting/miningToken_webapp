@@ -3,13 +3,13 @@ import {
   useAddress,
   useMetadata,
   useTokenBalance,
-  useContract,
-  useContractData
 } from "@thirdweb-dev/react";
 import { SmartContract, Token } from "@thirdweb-dev/sdk";
 import { INITIAL_TOKEN_ADDRESS } from "../const/contract";
 import { BigNumber, ethers } from "ethers";
 import React, { useEffect, useState } from "react";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import styles from "../styles/Home.module.scss";
 import ApproxRewards from "./ApproxRewards";
 
@@ -18,13 +18,12 @@ const numberContract = INITIAL_TOKEN_ADDRESS;
 type Props = {
   miningContract: SmartContract<any>;
   tokenContract: Token;
-  tokenSymbol: Token;
 };
 
-export default function Rewards({ miningContract, tokenContract, tokenSymbol }: Props) {
+export default function Rewards({ miningContract, tokenContract }: Props) {
   const address = useAddress();
 
-  const { data: tokenMetadata } = useMetadata(tokenContract, tokenSymbol);
+  const { data: tokenMetadata } = useMetadata(tokenContract);
   const { data: currentBalance } = useTokenBalance(tokenContract, address);
 
   const [unclaimedAmount, setUnclaimedAmount] = useState<BigNumber>();
@@ -46,36 +45,37 @@ export default function Rewards({ miningContract, tokenContract, tokenSymbol }: 
   }
 
   return (
-    <div className={styles.rewardBox}
+    <Card className={styles.rewardBox}
     >
+      <Card.Body>
 {tokenMetadata && (
 <>
-      <p style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '5px'}}>        <ThirdwebNftMedia
+      <Card.Title style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '5px'}}>        <ThirdwebNftMedia
           // @ts-ignore
           metadata={tokenMetadata}
           height={"25"}
-        />
-<b>{tokenMetadata.name}</b>      
-      </p>
+        /> {tokenMetadata.name}      
+      </Card.Title>
 <small>smartcontracts: {numberContract}</small>
       <p className={styles.noGapBottom}>
 
-        Saldo di wallet: <b>{currentBalance?.displayValue} <small>{tokenMetadata.symbol}</small></b>
+        Saldo di wallet: <b>{currentBalance?.displayValue} <small>ID</small></b>
       </p>
       <p>
        Offline Mining:{" "}
-        <b>{unclaimedAmount && ethers.utils.formatUnits(unclaimedAmount)} <small>{tokenMetadata.symbol}</small></b>
+        <b>{unclaimedAmount && ethers.utils.formatUnits(unclaimedAmount)} <small>ID</small></b>
       </p>
 </>
       )}
       <ApproxRewards miningContract={miningContract} />
 
-      <button
+      <Button variant="primary"
         onClick={() => claim()}
         className={`${styles.miniBtn} ${styles.spacerBottom}`}
       >
         Claim
-      </button>
-    </div>
+      </Button>
+    </Card.Body>
+   </Card>
   );
 }

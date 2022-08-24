@@ -1,6 +1,8 @@
 import { ThirdwebNftMedia, useAddress, useNFT } from "@thirdweb-dev/react";
 import { EditionDrop, SmartContract } from "@thirdweb-dev/sdk";
 import React, { useEffect, useState } from "react";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import Image from 'next/image';
 import ContractMappingResponse from "../types/ContractMappingResponse";
 import EditionDropMetadata from "../types/EditionDropMetadata";
@@ -27,7 +29,7 @@ export default function CurrentGear({
 
 const Cloud = (
   <div className={Gameplay.slideCloud}>
-    <Image className={Gameplay.awan} style={{zIndex: '-1px'}} src="/cloud.png" height="260" width="525" alt="cloud" />
+    <Image className={Gameplay.awan} style={{zIndex: '-1px'}} src="/cloud.png" height={260} width={525} alt="cloud" />
   </div>
 );
 
@@ -51,7 +53,7 @@ const Cloud = (
   return (
 <>
 {initial ? (
-<div className="card" style={{backgroundColor: 'transparent'}}>
+<Card style={{backgroundColor: 'transparent'}}>
     <div className={Gameplay.sliderBox}>
       <div className={Gameplay.sliderCloud}>
 {Cloud}
@@ -98,21 +100,21 @@ const Cloud = (
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          justifyContent: "center",
-          marginTop: 47,
+          justifyContent: "flex-start",
+          marginTop: 72,
         }}
       >
-        <Image className={Gameplay.motor1} src="/motor.png" height="64px" width="64px" alt="character-mining" />
+        <Image className={Gameplay.motor1} src="/motor.png" height={64} width={64} alt="character-mining" />
         <GameplayAnimation initial={initial} />
       </div>
     </div>
-</div>
+</Card>
 ) : ( 
 <>
 <div className="card">
     <div className={Gameplay.sliderBox} style={{padding: '10px', textAlign: 'left'}}>
 <h5>Cara Mining Token</h5>
-<span> Pilih jenis bahan bakar untuk mengaktifkan fungsi mining.<br/>Setiap bahan bakar mempunyai tingkat kecepatan mining token yang berbeda, kamu bisa memulai dengan bahan bakar "premium" yang disediakan gratis untuk mulai mengumpulkan token. Token bisa dibeli dan dijual di sushiswap segera.</span>
+<span> Pilih jenis bahan bakar untuk mengaktifkan fungsi mining.<br/>Setiap bahan bakar mempunyai tingkat kecepatan mining token yang berbeda, kamu bisa memulai dengan bahan bakar "premium" yang disediakan <b>gratis</b> untuk mulai mengumpulkan token. Token bisa dibeli dan dijual di sushiswap segera.</span>
         <Image className={Gameplay.motor} src="/motor.png" height="64px" width="64px" alt="character-mining" />
     </div>
 </div>
