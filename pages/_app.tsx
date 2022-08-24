@@ -28,25 +28,16 @@ useEffect(() => {
 <meta name="msapplication-TileColor" content="#2B5797" />
 <meta name="msapplication-tap-highlight" content="no" />
 <meta name="theme-color" content="#000000" />
-<meta
-  name='viewport'
-  content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
-/>
+<meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover' />
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/fav/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/icons/fav/favicon-16x16.png" />
 <link rel="manifest" href="/manifest.json" />
 <link rel="mask-icon" href="/icons/fav/safari-pinned-tab.svg" color="#5bbad5" />
 <link rel="shortcut icon" href="/favicon.ico" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:url" content="/" />
-<meta name="twitter:title" content="Mining App" />
-<meta name="twitter:description" content="Mining App at Tasikmalaya" />
-<meta name="twitter:image" content="/icons/fav/android-chrome-192x192.png" />
-<meta name="twitter:creator" content="@unangningEU" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="InitialD Token" />
 <meta property="og:description" content="Best Mining App" />
-<meta property="og:site_name" content="Mining App" />
+<meta property="og:site_name" content="InitialD" />
 <meta property="og:url" content="/" />
 <meta property="og:image" content="/icons/fav/apple-touch-icon.png" />
 </Head>
