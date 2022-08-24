@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import {
   useAddress,
@@ -41,6 +42,9 @@ const Home: NextPage = () => {
   if (!address) {
     return (
 <>
+<Head>
+<title>InitialD Token</title>
+</Head>
       <div className={styles.loading}>
         <Button
           className={`${styles.mainButton}`}
@@ -78,17 +82,27 @@ const Home: NextPage = () => {
   // 2. No NFTs - mint page
   if (ownedNfts.length === 0) {
     return (
+<>
+<Head>
+<title>InitialD Token</title>
+</Head>
       <div className={styles.container}>
         <MintContainer />
       </div>
+</>
     );
   }
 
   // 3. Has NFT already - show button to take to game
   return (
+<>
+<Head>
+<title>InitialD Token</title>
+</Head>
     <div className={styles.container}>
         <SwitchNetwork />
     </div>
+</>
   );
 };
 

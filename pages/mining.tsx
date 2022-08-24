@@ -6,6 +6,7 @@ import {
   useToken,
 } from "@thirdweb-dev/react";
 import React, { useState } from "react";
+import Head from "next/head";
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -47,6 +48,10 @@ export default function Play() {
   }
 
   return (
+<>
+<Head>
+<title>InitialD Token</title>
+</Head>
     <Container style={{ margin: '10px auto' }}>
       {miningContract &&
       characterContract &&
@@ -109,5 +114,6 @@ export default function Play() {
         <LoadingSection />
       )}
     </Container>
+</>
   );
 }
