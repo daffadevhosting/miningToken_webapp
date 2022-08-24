@@ -1,6 +1,7 @@
 import { ThirdwebNftMedia, useAddress, useNFT } from "@thirdweb-dev/react";
 import { EditionDrop, SmartContract } from "@thirdweb-dev/sdk";
 import React, { useEffect, useState } from "react";
+import Image from 'next/image';
 import ContractMappingResponse from "../types/ContractMappingResponse";
 import EditionDropMetadata from "../types/EditionDropMetadata";
 import GameplayAnimation from "./GameplayAnimation";
@@ -26,7 +27,7 @@ export default function CurrentGear({
 
 const Cloud = (
   <div className={Gameplay.slideCloud}>
-    <img style={{zIndex: '-1px'}} src="./cloud.png" height="360" width="100%" alt="cloud" />
+    <Image className={Gameplay.awan} style={{zIndex: '-1px'}} src="/cloud.png" height="260" width="525" alt="cloud" />
   </div>
 );
 
@@ -86,8 +87,9 @@ const Cloud = (
         </div>
       </div>
 {initial && (
-      <span className={`${styles.noGapTop} `}>Bahan Bakar Yang dipakai: <b>
-{initial.metadata.name}</b></span>)}
+            // @ts-ignore
+      <span className={`${styles.noGapTop} `}></span>
+    )}
 
       {/* Gameplay Animation */}
 
@@ -97,10 +99,10 @@ const Cloud = (
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: 24,
+          marginTop: 47,
         }}
       >
-        <img className={Gameplay.motor} src="./motor.png" height={64} width={64} alt="character-mining" />
+        <Image className={Gameplay.motor1} src="/motor.png" height="64px" width="64px" alt="character-mining" />
         <GameplayAnimation initial={initial} />
       </div>
     </div>
@@ -111,7 +113,7 @@ const Cloud = (
     <div className={Gameplay.sliderBox} style={{padding: '10px', textAlign: 'left'}}>
 <h5>Cara Mining Token</h5>
 <span> Pilih jenis bahan bakar untuk mengaktifkan fungsi mining.<br/>Setiap bahan bakar mempunyai tingkat kecepatan mining token yang berbeda, kamu bisa memulai dengan bahan bakar "premium" yang disediakan gratis untuk mulai mengumpulkan token. Token bisa dibeli dan dijual di sushiswap segera.</span>
-        <img style={{position: 'relative'}} src="./motor.png" height={64} width={64} alt="character-mining" />
+        <Image className={Gameplay.motor} src="/motor.png" height="64px" width="64px" alt="character-mining" />
     </div>
 </div>
 </>

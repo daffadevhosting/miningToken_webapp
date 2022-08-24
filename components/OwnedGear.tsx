@@ -53,7 +53,7 @@ export default function OwnedGear({ initialContract, miningContract }: Props) {
   return (
     <>
           <h2 className={`${styles.noGapTop} ${styles.noGapBottom}`}>
-            Bahan Bakar Motor
+            Item kamu
           </h2>
           <div
             style={{

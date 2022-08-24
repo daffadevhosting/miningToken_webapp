@@ -5,6 +5,7 @@ import {
   useEditionDrop,
 } from "@thirdweb-dev/react";
 import React from "react";
+import Image from 'next/image';
 import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
 import styles from "../styles/Home.module.scss";
 
@@ -17,10 +18,10 @@ export default function MintContainer() {
     <div className={styles.collectionContainer}>
       <h1>Edition Drop</h1>
 
-      <p>Claim karakter NFT mu & mulailah menambang!</p>
+      <p>Claim NFT gratis mu & mulailah menambang!</p>
 
       <div className={`${styles.nftBox} ${styles.spacerBottom}`}>
-        <img src="./motorcyclist.webp" style={{ height: 200 }} />
+        <Image src="/motorcyclist.webp" height="200" widht="200" alt="logo" style={{ height: 200 }} />
       </div>
 
       <button

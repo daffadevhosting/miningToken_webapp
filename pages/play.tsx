@@ -76,7 +76,7 @@ export default function Play() {
 
       {initialContract && tokenContract ? (
         <>
-<div className="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" style={{height: '80vh'}}>
+<div className="offcanvas offcanvas-bottom" tabIndex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" style={{height: '80vh'}}>
   <div className="offcanvas-header">
     <h5 className="offcanvas-title" id="offcanvasBottomLabel">Beli Bahan Bakar</h5>
     <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

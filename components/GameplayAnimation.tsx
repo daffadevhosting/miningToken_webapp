@@ -1,34 +1,35 @@
 import React from "react";
+import Image from 'next/image';
 import styles from "../styles/Gameplay.module.scss";
 import EditionDropMetadata from "../types/EditionDropMetadata";
 
 const Pohon = (
   <div className={styles.slide}>
-    <img src="./pohon.png" height="48" width="48" alt="pohon" />
+    <Image src="/pohon.png" height="48" width="48" alt="pohon" />
   </div>
 );
 
 const Pohon1 = (
   <div className={styles.slide}>
-    <img src="./pohon1.png" height="48" width="48" alt="pohon1" />
+    <Image src="/pohon1.png" height="48" width="48" alt="pohon1" />
   </div>
 );
 
 const House = (
   <div className={styles.slideHouse}>
-    <img style={{zIndex: '-1px'}} src="./home.png" height="80" width="110" alt="house" />
+    <Image style={{zIndex: '-1px'}} src="/home.png" height="80" width="110" alt="house" />
   </div>
 );
 
 const House1 = (
   <div className={styles.slideHouse}>
-    <img style={{zIndex: '-1px'}} src="./home1.png" height="80" width="110" alt="house" />
+    <Image style={{zIndex: '-1px'}} src="/home1.png" height="80" width="110" alt="house" />
   </div>
 );
 
 const House2 = (
   <div className={styles.slideHouse}>
-    <img style={{zIndex: '-1px'}} src="./home2.png" height="80" width="110" alt="house" />
+    <Image style={{zIndex: '-1px'}} src="/home2.png" height="80" width="110" alt="house" />
   </div>
 );
 
@@ -45,6 +46,7 @@ export default function GameplayAnimation({ initial }: Props) {
   }
 
   return (
+<>
     <div className={styles.slider}>
       <div className={styles.sliderHouse}>
 {House}
@@ -89,5 +91,6 @@ export default function GameplayAnimation({ initial }: Props) {
 <div className={styles.road}></div>
       </div>
     </div>
+</>
   );
 }

@@ -42,6 +42,8 @@ h2 {
   font-size: 2rem;
 }
 
+span {overflow: unset !important;}
+
 ::-webkit-scrollbar {
   width: 5px;
   border-radius: 8px;
