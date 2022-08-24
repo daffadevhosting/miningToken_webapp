@@ -5,9 +5,6 @@ import {
   useEditionDrop,
   useMetamask, useWalletConnect, useCoinbaseWallet,
   useOwnedNFTs,
-  useNetwork,
-  useNetworkMismatch,
-  ChainId
 } from "@thirdweb-dev/react";
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -15,6 +12,7 @@ import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
 import MintContainer from "../components/MintContainer";
+import SwitchNetwork from "../components/SwitchNetwork";
 import { useRouter } from "next/router";
 import Spinner from 'react-bootstrap/Spinner';
 
@@ -26,8 +24,6 @@ const Home: NextPage = () => {
 
   const editionDrop = useEditionDrop(CHARACTER_EDITION_ADDRESS);
 
-  const networkMismatch = useNetworkMismatch();
-  const [, switchNetwork] = useNetwork();
 
   const connectWithMetamask = useMetamask();
   const connectWithWalletConnect = useWalletConnect();
@@ -91,20 +87,7 @@ const Home: NextPage = () => {
   // 3. Has NFT already - show button to take to game
   return (
     <div className={styles.container}>
-<>
-{networkMismatch ? (
-    <button onClick={() => switchNetwork(ChainId.FantomTestnet)} className={`${styles.mainButton} ${styles.loading}`}>
-      Switch Network
-    </button>
-) : (
-      <button
-        className={`${styles.mainButton} ${styles.loading}`}
-        onClick={() => router.push(`/mining`)}
-      >
-        Start Mining
-      </button>
-)}
-</>
+        <SwitchNetwork />
     </div>
   );
 };
