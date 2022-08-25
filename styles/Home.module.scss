@@ -61,6 +61,17 @@
   padding: 16px;
 }
 
+.coverup {
+    background: #fff;
+    width: 100%;
+    height: -webkit-fill-available;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
 .pageContainer {
   max-width: 600px;
   width: 90vw;

@@ -12,7 +12,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
-import SwitchNetwork from "../components/SwitchNetwork";
+import MintContainer from "../components/MintContainer";
 import { useRouter } from "next/router";
 import Spinner from 'react-bootstrap/Spinner';
 
@@ -45,7 +45,6 @@ const Home: NextPage = () => {
 <title>InitialD Token</title>
 </Head>
       <div className={styles.loading}>
-        <SwitchNetwork />
         <Button
           className={`${styles.mainButton}`}
            onClick={handleShow}
@@ -87,7 +86,7 @@ const Home: NextPage = () => {
 <title>InitialD Token</title>
 </Head>
       <div className={styles.container}>
-        <SwitchNetwork />
+        <MintContainer />
       </div>
 </>
     );

@@ -7,7 +7,6 @@ import {
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Button from 'react-bootstrap/Button';
-import MintContainer from "../components/MintContainer";
 import styles from "../styles/Home.module.scss";
 
 
@@ -28,12 +27,13 @@ function Switch() {
   return (
 <>
 {networkMismatch ? (
+<div className={styles.coverup}>
     <Button onClick={() => switchNetwork(ChainId.FantomTestnet)} className={`${styles.mainButton} ${styles.loading}`}>
       Switch Network
     </Button>
+</div>
 ) : (
 <>
-        <MintContainer />
 </>
 )}
 </>

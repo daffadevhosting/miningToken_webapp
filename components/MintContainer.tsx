@@ -8,6 +8,7 @@ import React from "react";
 import Image from 'next/image';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import SwitchNetwork from "../components/SwitchNetwork";
 import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
 import styles from "../styles/Home.module.scss";
 
@@ -41,6 +42,7 @@ export default function MintContainer() {
 </div>
     ) : (
 <div>
+        <SwitchNetwork />
       <Button
         className={`${styles.mainButton} ${styles.spacerBottom}`}
         onClick={() =>
