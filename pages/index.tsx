@@ -77,10 +77,6 @@ const Home: NextPage = () => {
   }
 
 
-  if (networkMismatch) {
-    return <SwitchNetwork />
-  }
-
   // 1. Loading
   if (isLoading) {
     return <div className={styles.loading}><Spinner animation="grow" /></div>;
@@ -92,13 +88,14 @@ const Home: NextPage = () => {
   }
 
   // 2. No NFTs - mint page
-  if (ownedNfts.length === 0) {
+  if (ownedNfts.length === 0 || networkMismatch) {
     return (
 <>
 <Head>
 <title>InitialD Token</title>
 </Head>
       <div className={styles.container}>
+        <SwitchNetwork />
         <MintContainer />
       </div>
 </>
@@ -112,11 +109,12 @@ const Home: NextPage = () => {
 <title>InitialD Token</title>
 </Head>
     <div className={styles.container}>
+        <SwitchNetwork />
       <Button
         className={`${styles.mainButton} ${styles.loading}`}
         onClick={() => router.push(`/mining`)}
       >
-        Start Mining
+        Open App
       </Button>
     </div>
 </>
