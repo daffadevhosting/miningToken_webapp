@@ -42,7 +42,6 @@ export default function MintContainer() {
 </div>
     ) : (
 <div>
-        <SwitchNetwork />
       <Button
         className={`${styles.mainButton} ${styles.spacerBottom}`}
         onClick={() =>

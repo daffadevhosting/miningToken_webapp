@@ -6,6 +6,9 @@ import {
   useEditionDrop,
   useMetamask, useWalletConnect, useCoinbaseWallet,
   useOwnedNFTs,
+  useNetwork,
+  useNetworkMismatch,
+  ChainId
 } from "@thirdweb-dev/react";
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -13,10 +16,15 @@ import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
 import MintContainer from "../components/MintContainer";
+import SwitchNetwork from "../components/SwitchNetwork";
 import { useRouter } from "next/router";
 import Spinner from 'react-bootstrap/Spinner';
 
 const Home: NextPage = () => {
+
+  const networkMismatch = useNetworkMismatch();
+  const [, switchNetwork] = useNetwork();
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -68,6 +76,11 @@ const Home: NextPage = () => {
     );
   }
 
+
+  if (networkMismatch) {
+    return <SwitchNetwork />
+  }
+
   // 1. Loading
   if (isLoading) {
     return <div className={styles.loading}><Spinner animation="grow" /></div>;
@@ -75,7 +88,7 @@ const Home: NextPage = () => {
 
   // Something went wrong
   if (!ownedNfts || isError) {
-    return <div className={styles.loading}>Error</div>;
+    return <div className={styles.loading}>Error...!</div>;
   }
 
   // 2. No NFTs - mint page
