@@ -17,6 +17,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { CHARACTER_EDITION_ADDRESS } from "../const/contract";
 import MintContainer from "../components/MintContainer";
 import SwitchNetwork from "../components/SwitchNetwork";
+import MiningToken from "../components/mining";
 import { useRouter } from "next/router";
 import Spinner from 'react-bootstrap/Spinner';
 
@@ -108,14 +109,9 @@ const Home: NextPage = () => {
 <Head>
 <title>InitialD Token</title>
 </Head>
-    <div className={styles.container}>
+    <div className={styles.containerPlay}>
         <SwitchNetwork />
-      <Button
-        className={`${styles.mainButton} ${styles.loading}`}
-        onClick={() => router.push(`/mining`)}
-      >
-        Open App
-      </Button>
+        <MiningToken />
     </div>
 </>
   );

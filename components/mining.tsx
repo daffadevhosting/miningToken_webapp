@@ -40,9 +40,11 @@ export default function Play() {
   if (!address) {
     return (
       <Container>
-        <button className={styles.mainButton} onClick={connectWithMetamask}>
-          Connect Wallet
-        </button>
+        <div className={styles.loading}>
+            <Button className={styles.mainButton} onClick={connectWithMetamask}>
+                Connect Wallet
+            </Button>
+        </div>
       </Container>
     );
   }
@@ -84,14 +86,14 @@ export default function Play() {
         <LoadingSection />
       )}
 <></>
-
-      {initialContract && tokenContract ? (
-        <>
     <Offcanvas show={show} onHide={handleClose} placement='bottom' style={{height: '80vh'}}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title><BsShopWindow size={'28px'}/> Shop Item</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
+      {initialContract && tokenContract ? (
+
+        <>
           <div
             style={{
               width: "100%",
@@ -105,14 +107,14 @@ export default function Play() {
           >
             <Shop initialContract={initialContract} />
           </div>
-        </Offcanvas.Body>
-      </Offcanvas>
-<Button variant="primary" onClick={handleShow} className="me-2" style={{position: 'fixed', bottom: 20, right: 20, width: '54px', height: '54px'}}><BsShopWindow size={'28px'}/></Button>
 
         </>
       ) : (
         <LoadingSection />
       )}
+        </Offcanvas.Body>
+      </Offcanvas>
+<Button variant="primary" onClick={handleShow} className="me-2" style={{position: 'fixed', bottom: 20, right: 20, width: '54px', height: '54px'}}><BsShopWindow size={'28px'}/></Button>
     </Container>
 </>
   );
