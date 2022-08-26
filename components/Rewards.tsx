@@ -80,7 +80,7 @@ export default function Rewards({ miningContract, tokenContract }: Props) {
           height={"25"}
         /> {tokenMetadata.name} </div>
 <div className={styles.titleRight}>
-<a target='_blank' href='https://testnet.ftmscan.com/token/0xb6d72C734d5118E17f79ac7878C5f17a88ad17c6'><Image src='/logo-ftmscan.svg' width={120} height={20}/></a></div>
+<a target='_blank' href='https://testnet.ftmscan.com/token/0xb6d72C734d5118E17f79ac7878C5f17a88ad17c6' rel="noreferrer"><Image src='/logo-ftmscan.svg' width={120} height={20}/></a></div>
 </div>
       </Card.Title>
 <small style={{marginBottom: 10}}>smartcontracts: {numberContract}</small>
