@@ -78,17 +78,14 @@ const Home: NextPage = () => {
   }
 
 
-  // 1. Loading
   if (isLoading) {
     return <div className={styles.loading}><Spinner animation="grow" /></div>;
   }
 
-  // Something went wrong
   if (!ownedNfts || isError) {
     return <div className={styles.loading}>Error...!</div>;
   }
 
-  // 2. No NFTs - mint page
   if (ownedNfts.length === 0 || networkMismatch) {
     return (
 <>
@@ -103,7 +100,7 @@ const Home: NextPage = () => {
     );
   }
 
-  // 3. Has NFT already - show button to take to game
+
   return (
 <>
 <Head>
