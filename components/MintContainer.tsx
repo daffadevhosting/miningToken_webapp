@@ -30,7 +30,6 @@ export default function MintContainer() {
         {
           onSuccess: (data) => {
             Swal.fire({
-              position: 'middle',
               icon: 'success',
               title: 'Successfully claim NFT...',
               showConfirmButton: false,
@@ -40,7 +39,6 @@ export default function MintContainer() {
           onError: (error) => {
             const e = error;
             Swal.fire({
-              position: 'middle',
               icon: 'error',
               title: 'Gagal Claim NFT...',
               showConfirmButton: false,

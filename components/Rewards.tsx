@@ -48,7 +48,6 @@ export default function Rewards({ miningContract, tokenContract }: Props) {
     {
     try {
         Swal.fire({
-          position: 'middle',
           icon: 'success',
           title: 'Token berhasil di claim...',
           showConfirmButton: false,
@@ -56,7 +55,6 @@ export default function Rewards({ miningContract, tokenContract }: Props) {
         });
     } catch (error) {
         Swal.fire({
-          position: 'middle',
           icon: 'error',
           title: 'Token gagal di claim...',
           showConfirmButton: false,
