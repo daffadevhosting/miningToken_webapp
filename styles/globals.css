@@ -44,6 +44,13 @@ h2 {
 
 span {overflow: unset !important;}
 
+.swal2-icon {
+    margin: 1.5em auto 0.6em !important;
+}
+.swal2-title {
+    font-size: 1.5em !important;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   border-radius: 8px;

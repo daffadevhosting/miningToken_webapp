@@ -17,7 +17,7 @@ export default function Shop({ initialContract }: Props) {
 
   return (
     <>
-      <div className={styles.nftBoxGrid}>
+      <div className={styles.nftBoxGridshop}>
         {availableInitials?.map((p) => (
           <ShopItem
             initialContract={initialContract}
