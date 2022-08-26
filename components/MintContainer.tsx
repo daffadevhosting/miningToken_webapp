@@ -48,9 +48,13 @@ export default function MintContainer() {
         }
       );
     } catch (error) {
-      console.error(error.message || "something went wrong");
-      alert(error.message || "something went wrong");
-    }
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal Claim NFT...',
+              showConfirmButton: false,
+              timer: 3800
+            });
+        }
   }
 
   return (
